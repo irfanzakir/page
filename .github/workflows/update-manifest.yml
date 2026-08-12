@@ -20,18 +20,20 @@ jobs:
         run: |
           mkdir -p images
           cd images
-          files=$(ls -1 | grep -vi '^manifest.json$' || true)
           {
             echo "["
             first=true
-            for f in $files; do
+            while IFS= read -r -d '' f; do
+              name=$(basename "$f")
+              if [ "$name" = "manifest.json" ]; then continue; fi
               if [ "$first" = true ]; then
                 first=false
               else
                 echo ","
               fi
-              printf '  "%s"' "$f"
-            done
+              esc=$(printf '%s' "$name" | sed 's/\\/\\\\/g; s/"/\\"/g')
+              printf '  "%s"' "$esc"
+            done < <(find . -maxdepth 1 -type f -print0)
             echo ""
             echo "]"
           } > manifest.json
