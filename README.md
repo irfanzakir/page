@@ -50,5 +50,3 @@ What I changed (recent)
 
 Contributing
 - PRs are welcome. For asset changes, update `images/manifest.json` and push the new files into `images/`.
-
-If you'd like, I can open a pull request that contains these changes (README + assets + workflow) — or split them into smaller PRs. Which do you prefer?
