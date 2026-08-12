@@ -308,7 +308,7 @@
 
   async function loadManifest() {
     try {
-      const res = await fetch('images/manifest.json', { cache: 'no-store' });
+      const res = await fetch('images/manifest.json?v=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error('manifest not found');
       const files = await res.json();
 
