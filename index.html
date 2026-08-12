@@ -339,7 +339,7 @@
 
       if (VIDEO_EXT.includes(ext)) {
         const video = document.createElement('video');
-        video.src = 'images/' + name;
+        video.src = 'images/' + encodeURIComponent(name);
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
@@ -347,7 +347,7 @@
         slide.appendChild(video);
       } else {
         const img = document.createElement('img');
-        img.src = 'images/' + name;
+        img.src = 'images/' + encodeURIComponent(name);
         img.alt = name;
         slide.appendChild(img);
       }
